@@ -42,7 +42,7 @@ done
 find ${ROOTDIR}/ -name '*.yaml' -print0 |
 while IFS= read -r -d '' File; do
   if grep -q "kind: Application" "$File"; then
-    #echo "$File"
+    echo "$File"
     sed -i'.bak' -e "s#\${GIT_BASEURL}/\${GIT_ORG}/\${GIT_GITOPS}#${GIT_BASEURL}/${GIT_ORG}/${GIT_GITOPS}#" $File
     sed -i'.bak' -e "s#\${GIT_GITOPS_BRANCH}#${GIT_GITOPS_BRANCH}#" $File
     sed -i'.bak' -e "s#\${GIT_BASEURL}/\${GIT_ORG}/\${GIT_GITOPS_INFRA}#${GIT_BASEURL}/${GIT_ORG}/${GIT_GITOPS_INFRA}#" $File
